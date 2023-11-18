@@ -8,6 +8,7 @@ google-ID: ''
 
 menu:
 - {name: 'Facts',  url: 'facts'}
+- {name: 'Facts',  url: 'plotly-chart'}
 - {name: 'Resources', url: 'resources'}
 - {name: 'Documentation',      url: 'documentation'}
 - {name: 'Contact',            url: 'contact'}
