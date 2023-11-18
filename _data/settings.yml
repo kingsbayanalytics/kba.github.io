@@ -9,6 +9,7 @@ google-ID: ''
 menu:
 - {name: 'Facts',  url: 'facts'}
 - {name: 'Plotly Chart',  url: 'plotly-chart'}
+- {name: 'Power BI Report',  url: 'power-bi-report'}
 - {name: 'Resources', url: 'resources'}
 - {name: 'Documentation',      url: 'documentation'}
 - {name: 'Contact',            url: 'contact'}
