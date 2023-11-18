@@ -29,7 +29,6 @@ permalink: /resources
       <td>Plotly</td>
       <td><a href="https://plotly.com/">plotly.com</a></td>
     </tr>
-    <!-- Add more rows as needed -->
   </tbody>
 </table>
 
