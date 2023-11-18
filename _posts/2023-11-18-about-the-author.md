@@ -4,7 +4,7 @@ title: "About the Author"
 author: "Mike Warren"
 categories: facts
 tags: [sample]
-image: "https://i.imgur.com/SmS2YV8.jpg"
+image: 
 ---
 
 
