@@ -9,7 +9,9 @@
       {% endif %}
     {% endfor %}
     {% for item in site.data.settings.social %}
-      <a href="{{ item.link }}" class="menu-link" target="_blank"><i class="fa fa-{{ item.icon }}" aria-hidden="true"></i></a>
+      {% if item.icon != "twitter" and item.icon != "instagram" %}
+        <a href="{{ item.link }}" class="menu-link" target="_blank"><i class="fa fa-{{ item.icon }}" aria-hidden="true"></i></a>
+      {% endif %}
     {% endfor %}
   </nav>
   <div class="dropdown">

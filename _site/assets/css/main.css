@@ -546,30 +546,6 @@ pre code {
   color: #f39c12;
 }
 
-.fa-twitter {
-  padding: 5px;
-  -webkit-transition: 1s;
-  -o-transition: 1s;
-  -ms-transition: 1s;
-  -moz-transition: 1s;
-  transition: 1s;
-}
-.fa-twitter:hover {
-  color: #00aced;
-}
-
-.fa-instagram {
-  padding: 5px;
-  -webkit-transition: 1s;
-  -o-transition: 1s;
-  -ms-transition: 1s;
-  -moz-transition: 1s;
-  transition: 1s;
-}
-.fa-instagram:hover {
-  color: #375989;
-}
-
 .fa-github {
   padding: 5px;
   -webkit-transition: 1s;
