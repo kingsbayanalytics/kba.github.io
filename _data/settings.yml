@@ -7,7 +7,7 @@ disqus:
 google-ID: ''
 
 menu:
-- {name: 'Plotly Chart',  url: 'plotly-chart'}
+# - {name: 'Plotly Chart',  url: 'plotly-chart'}
 # - {name: 'Power BI Report',  url: 'power-bi-report'}
 # - {name: 'Resources', url: 'resources'}
 # - {name: 'Documentation',      url: 'documentation'}

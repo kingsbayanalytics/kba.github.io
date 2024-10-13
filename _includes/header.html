@@ -3,12 +3,14 @@
     <a href="{{ site.github.url }}/">{{ site.title }}</a>
   </h3>
   <nav class="menu-list">
+    {% comment %}
     <a href="{{ site.github.url }}/plotly-chart" class="menu-link">Plotly Chart</a>
     {% for item in site.data.settings.menu %}
       {% if item.name != "Contact" and item.name != "About Me" %}
         <a href="{{ site.github.url }}/{{ item.url }}" class="menu-link">{{ item.name }}</a>
       {% endif %}
     {% endfor %}
+    {% endcomment %}
     {% for item in site.data.settings.social %}
       {% if item.icon != "twitter" and item.icon != "instagram" %}
         <a href="{{ item.link }}" class="menu-link" target="_blank"><i class="fa fa-{{ item.icon }}" aria-hidden="true"></i></a>

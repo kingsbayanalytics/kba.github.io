@@ -395,7 +395,6 @@ pre code {
 /*
   Pagination
 */
-/*
 .pagination {
   text-align: center;
 }
@@ -422,7 +421,6 @@ pre code {
 .pagination-active:hover {
   background-color: #e0e0e0;
 }
-*/
 
 .page-content {
   max-width: 600px;
