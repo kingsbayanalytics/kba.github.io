@@ -8,19 +8,19 @@ google-ID: ''
 
 menu:
 - {name: 'Plotly Chart',  url: 'plotly-chart'}
-- {name: 'Power BI Report',  url: 'power-bi-report'}
-- {name: 'Resources', url: 'resources'}
-- {name: 'Documentation',      url: 'documentation'}
-- {name: 'Contact',            url: 'contact'}
+# - {name: 'Power BI Report',  url: 'power-bi-report'}
+# - {name: 'Resources', url: 'resources'}
+# - {name: 'Documentation',      url: 'documentation'}
+# - {name: 'Contact',            url: 'contact'}
 
 # Available social icons are powered by Font Awesome, so you can use any icon that they offer
 social:
 - {icon: 'rss-square', link: 'feed.xml'}
 
 # Customize site text
-pagination:
-  next_page: 'Newer'
-  previous_page: 'Older'
+# pagination:
+#   next_page: 'Newer'
+#   previous_page: 'Older'
 
 sharing_button_prompt: 'Feel free to share!'
 
