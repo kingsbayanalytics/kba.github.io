@@ -1,82 +1,111 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-// Define the widget configuration type
-interface TradingViewWidgetConfig {
-  width: string | number;
-  height: number;
-  symbol: string;
-  interval: string;
-  timezone: string;
-  theme: 'light' | 'dark';
-  style: string;
-  locale: string;
-  toolbar_bg: string;
-  enable_publishing: boolean;
-  allow_symbol_change: boolean;
-  container_id: string;
-  studies?: string[];
-  range?: string;
-  hide_side_toolbar?: boolean;
-  details?: boolean;
-  hotlist?: boolean;
-  calendar?: boolean;
-  show_popup_button?: boolean;
-  popup_width?: string;
-  popup_height?: string;
-}
-
-// Define the TradingView widget type
-interface TradingViewType {
-  widget: new (config: TradingViewWidgetConfig) => void;
-}
-
-// Update the global window type
 declare global {
   interface Window {
-    TradingView: TradingViewType;
+    TradingView: {
+      widget: any;
+    }
   }
 }
 
 const TradingViewWidget = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://s3.tradingview.com/tv.js';
-    script.async = true;
-    document.head.appendChild(script);
+    const loadTradingViewScript = async () => {
+      try {
+        // Load TradingView script
+        const script = document.createElement('script');
+        script.src = 'https://s3.tradingview.com/tv.js';
+        script.async = true;
+        
+        // Create widget after script loads
+        script.onload = () => {
+          if (window.TradingView && containerRef.current) {
+            const widget = new window.TradingView.widget({
+              // Required
+              container_id: 'tradingview_chart',
+              width: '100%',
+              height: '400',
+              symbol: 'AMEX:SPY',
+              interval: 'D',
+              
+              // Add your username here
+              username: process.env.NEXT_PUBLIC_TRADINGVIEW_USERNAME,
+              
+              // Optional configurations
+              timezone: 'America/New_York',
+              theme: 'dark',
+              style: '1',
+              locale: 'en',
+              toolbar_bg: '#131722',
+              header_widget_buttons_mode: 'fullsize',
+              disabled_features: [
+                'header_symbol_search',
+                'header_settings',
+                'header_compare',
+                'header_undo_redo',
+                'header_screenshot',
+                'header_saveload'
+              ],
+              enabled_features: [
+                'use_localstorage_for_settings',
+                'save_chart_properties_to_local_storage',
+              ],
+              enable_publishing: true,
+              withdateranges: true,
+              hide_side_toolbar: false,
+              allow_symbol_change: true,
+              save_image: true,
+              
+              // Enable features for logged-in users
+              charts_storage_url: 'https://saveload.tradingview.com',
+              charts_storage_api_version: '1.1',
+              client_id: 'tradingview.com',
+              
+              // Load studies/indicators
+              studies: [
+                'MAExp@tv-basicstudies',
+                'RSI@tv-basicstudies',
+                'VWAP@tv-basicstudies'
+              ],
+              
+              // Event handlers
+              onChartReady: () => {
+                console.log('Chart is ready');
+                // Add any initialization code here
+              },
+            });
+          }
+        };
 
-    script.onload = () => {
-      if (window.TradingView) {
-        new window.TradingView.widget({
-          width: '100%',
-          height: 500,
-          symbol: 'AMEX:SPY',
-          interval: 'D',
-          timezone: 'Etc/UTC',
-          theme: 'dark',
-          style: '1',
-          locale: 'en',
-          toolbar_bg: '#f1f3f6',
-          enable_publishing: false,
-          allow_symbol_change: true,
-          container_id: 'tradingview_chart',
-          studies: ['RSI@tv-basicstudies', 'MAExp@tv-basicstudies'],
-          hide_side_toolbar: false,
-          details: true,
-          hotlist: true,
-          calendar: true
-        });
+        document.head.appendChild(script);
+        
+        return () => {
+          if (script.parentNode) {
+            script.parentNode.removeChild(script);
+          }
+        };
+      } catch (error) {
+        console.error('Error initializing TradingView widget:', error);
       }
     };
 
-    return () => {
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
-    };
+    loadTradingViewScript();
   }, []);
 
-  return <div id="tradingview_chart" />;
+  return (
+    <div 
+      id="tradingview_chart" 
+      ref={containerRef}
+      style={{
+        width: '100%',
+        height: '400px',
+        position: 'relative'
+      }} 
+    />
+  );
 };
 
 export default TradingViewWidget; 
