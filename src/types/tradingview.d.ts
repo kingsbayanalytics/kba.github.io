@@ -30,6 +30,18 @@ export interface ChartingLibraryWidgetOptions {
   charts_storage_api_version?: string;
   client_id?: string;
   onChartReady?: () => void;
+  custom_css_url?: string;
+  loading_screen?: { backgroundColor: string };
+  studies_overrides?: Record<string, any>;
+  overrides?: {
+    [key: string]: string | number | boolean;
+    'mainSeriesProperties.style'?: number;
+    'paneProperties.background'?: string;
+    'paneProperties.vertGridProperties.color'?: string;
+    'paneProperties.horzGridProperties.color'?: string;
+    'scalesProperties.backgroundColor'?: string;
+    'scalesProperties.lineColor'?: string;
+  };
 }
 
 export interface IChartingLibraryWidget {
