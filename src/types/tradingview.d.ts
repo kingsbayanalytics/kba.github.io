@@ -6,6 +6,23 @@ declare global {
   }
 }
 
+export interface StudyOverrides {
+  [key: string]: string | number | boolean;
+  'volume.visible'?: boolean;
+  'volume.volume.color.0'?: string;
+  'volume.volume.color.1'?: string;
+}
+
+export interface ChartPropertyOverrides {
+  [key: string]: string | number | boolean;
+  'mainSeriesProperties.style'?: number;
+  'paneProperties.background'?: string;
+  'paneProperties.vertGridProperties.color'?: string;
+  'paneProperties.horzGridProperties.color'?: string;
+  'scalesProperties.backgroundColor'?: string;
+  'scalesProperties.lineColor'?: string;
+}
+
 export interface ChartingLibraryWidgetOptions {
   container_id: string;
   width: string | number;
@@ -32,16 +49,8 @@ export interface ChartingLibraryWidgetOptions {
   onChartReady?: () => void;
   custom_css_url?: string;
   loading_screen?: { backgroundColor: string };
-  studies_overrides?: Record<string, any>;
-  overrides?: {
-    [key: string]: string | number | boolean;
-    'mainSeriesProperties.style'?: number;
-    'paneProperties.background'?: string;
-    'paneProperties.vertGridProperties.color'?: string;
-    'paneProperties.horzGridProperties.color'?: string;
-    'scalesProperties.backgroundColor'?: string;
-    'scalesProperties.lineColor'?: string;
-  };
+  studies_overrides?: StudyOverrides;
+  overrides?: ChartPropertyOverrides;
 }
 
 export interface IChartingLibraryWidget {
