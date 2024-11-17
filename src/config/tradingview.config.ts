@@ -2,11 +2,24 @@ import { ChartingLibraryWidgetOptions } from '@/types/tradingview';
 
 export const tradingViewConfig: Partial<ChartingLibraryWidgetOptions> = {
   studies: [
-    // Default studies/indicators
-    { id: 'VIX@tv-basicstudies', visible: true },
-    { id: 'TICK@tv-basicstudies', visible: true },
-    { id: 'Market Profile@tv-basicstudies', visible: true }
+    // Default studies/indicators - just strings, not objects
+    'VIX@tv-basicstudies',
+    'TICK@tv-basicstudies',
+    'Market Profile@tv-basicstudies'
   ],
+  // Enable features for indicators
+  enabled_features: [
+    'study_templates',
+    'use_localstorage_for_settings',
+    'save_chart_properties_to_local_storage',
+  ],
+  // Optional: Configure default visibility through overrides
+  overrides: {
+    "mainSeriesProperties.style": 1,
+    "paneProperties.background": "#131722",
+    "paneProperties.vertGridProperties.color": "#363c4e",
+    "paneProperties.horzGridProperties.color": "#363c4e",
+  },
   // Enable trading features
   enabled_features: [
     'trading_account_manager',
