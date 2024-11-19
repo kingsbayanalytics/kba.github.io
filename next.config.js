@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   basePath: '/kba_site',
+  output: 'export',
   images: {
     unoptimized: true,
   },
-  distDir: 'out',
-  trailingSlash: false,
 }
 
 module.exports = nextConfig 

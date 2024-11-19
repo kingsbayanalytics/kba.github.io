@@ -2,9 +2,13 @@
 import { useEffect, useRef } from 'react';
 import type { ChartingLibraryWidgetOptions, IChartingLibraryWidget } from '@/types/tradingview';
 
-export const useTradingViewWidget = () => {
+interface UseTradingViewWidgetProps {
+  onChartReady?: (widget: any) => void;
+}
+
+export const useTradingViewWidget = ({ onChartReady }: UseTradingViewWidgetProps = {}) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const widgetRef = useRef<IChartingLibraryWidget | null>(null);
+  const widgetRef = useRef<any>(null);
 
   useEffect(() => {
     const loadTradingViewScript = async () => {
@@ -43,9 +47,14 @@ export const useTradingViewWidget = () => {
               enabled_features: [
                 'use_localstorage_for_settings',
                 'save_chart_properties_to_local_storage',
+                'show_object_tree',
+                'trading_annotations',
               ],
               onChartReady: () => {
                 console.log('Chart is ready');
+                if (onChartReady && widgetRef.current) {
+                  onChartReady(widgetRef.current);
+                }
               },
             };
 

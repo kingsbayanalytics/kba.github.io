@@ -1,4 +1,6 @@
+'use client';
 import ClientTradingViewWrapper from '@/components/ClientTradingViewWrapper';
+import Link from 'next/link';
 
 export default function FinancialAnalytics() {
   return (
@@ -6,7 +8,15 @@ export default function FinancialAnalytics() {
       <h1 className="text-4xl font-bold mb-8">Financial Analytics</h1>
       <div className="w-full max-w-6xl">
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">Market Analysis</h2>
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-2xl font-semibold">Market Analysis</h2>
+            <Link 
+              href="/financial/trade-journal" 
+              className="text-blue-500 hover:text-blue-600"
+            >
+              View Trading Journal →
+            </Link>
+          </div>
           <div style={{ width: '100%', height: '1000px', position: 'relative' }}>
             <ClientTradingViewWrapper />
           </div>
